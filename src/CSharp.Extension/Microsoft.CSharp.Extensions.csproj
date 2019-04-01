@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/ojdev/Microsoft.CSharp.Extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ojdev/Microsoft.CSharp.Extensions</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseUrl>https://github.com/ojdev/Microsoft.CSharp.Extensions/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
 </Project>
