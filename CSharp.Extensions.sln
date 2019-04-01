@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Extension", "src\CSharp.Extension\CSharp.Extension.csproj", "{75C3DA27-877F-4C20-84FB-6BAD94BF9B8D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0DE82019-6DD6-4FF3-849E-3D3A35469802}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6C343FEA-2306-45B3-9AF5-217FDC422107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Extensions.UnitTest", "test\CSharp.Extensions.UnitTest\CSharp.Extensions.UnitTest.csproj", "{ACF5D113-809E-4CC0-8E71-21061A002676}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,17 @@ Global
 		{75C3DA27-877F-4C20-84FB-6BAD94BF9B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75C3DA27-877F-4C20-84FB-6BAD94BF9B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75C3DA27-877F-4C20-84FB-6BAD94BF9B8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACF5D113-809E-4CC0-8E71-21061A002676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACF5D113-809E-4CC0-8E71-21061A002676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACF5D113-809E-4CC0-8E71-21061A002676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACF5D113-809E-4CC0-8E71-21061A002676}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75C3DA27-877F-4C20-84FB-6BAD94BF9B8D} = {0DE82019-6DD6-4FF3-849E-3D3A35469802}
+		{ACF5D113-809E-4CC0-8E71-21061A002676} = {6C343FEA-2306-45B3-9AF5-217FDC422107}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87F5E012-CB8D-468E-9548-581B25B295BB}
