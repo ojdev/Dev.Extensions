@@ -25,9 +25,11 @@ jobs:
         # Optionally strip `v` prefix
         strip_v: true
     - name: Set VERSION variable from tag
-      run: echo ${{steps.tag.outputs.tag}} 
+      run: echo ${{steps.tag.outputs.tag}}     
+    - name: Build with dotnet
+      run: dotnet build --configuration Release src/Dev.Extensions
     - name: Pack
-      run: dotnet pack src/Dev.Extensions -c Release --include-symbols --include-source  -p:PackageVersion=${{steps.tag.outputs.tag}} -o artifacts/
+      run: dotnet pack src/Dev.Extensions -c Release --include-symbols --include-source  -p:PackageVersion=v${{steps.tag.outputs.tag}} -o artifacts/
     - name: Publish Symbols to NuGet
       run: dotnet nuget push artifacts/*.symbols.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
     
