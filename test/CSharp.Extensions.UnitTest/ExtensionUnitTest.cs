@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CSharp.Extensions.UnitTest
 {
-    public class StringExtensionUnitTest
+    public class ExtensionUnitTest
     {
         [Theory(DisplayName = "字符串的As转换", Timeout = 30000)]
         [InlineData("9", 9)]
@@ -26,6 +26,25 @@ namespace CSharp.Extensions.UnitTest
         public void As_Decimal_UnitTest()
         {
             Assert.Equal(3.0000000000000000000001m, "3.0000000000000000000001".As<decimal>());
+        }
+        [Theory(DisplayName = "字符串的MD5转换", Timeout = 30000)]
+        [InlineData("1", "C4CA4238A0B923820DCC509A6F75849B")]
+        [InlineData("a", "0CC175B9C0F1B6A831C399E269772661")]
+        [InlineData("https://oujun.work", "70C298EC8113F2562822ACD513BE0346")]
+        public void MD5_UnitTest(string s, string d)
+        {
+            Assert.Equal(d, s.GetMD5String());
+        }
+
+        [Theory(DisplayName = "字符串DES转换", Timeout = 30000)]
+        [InlineData("https://oujun.work", "******")]
+        [InlineData("abcdefghji", "dev")]
+        [InlineData("a b c d e f g", "helloworld")]
+        public void DES_UnitTest(string s, string key)
+        {
+            var d = s.Encrypt(key);
+            Assert.NotNull(d);
+            Assert.Equal(s, d.Decrypt(key));
         }
     }
 }
