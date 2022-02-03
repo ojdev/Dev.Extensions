@@ -42,9 +42,9 @@ namespace CSharp.Extensions.UnitTest
         [InlineData("a b c d e f g", "helloworld")]
         public void DES_UnitTest(string s, string key)
         {
-            var d = s.Encrypt(key);
+            var d = s.DESEncrypt(key);
             Assert.NotNull(d);
-            Assert.Equal(s, d.Decrypt(key));
+            Assert.Equal(s, d.DESDecrypt(key));
         }
     }
 }

@@ -84,7 +84,7 @@ public static class StringExtension
     /// <param name="SingleLine">True：单行；False：所有</param>
     /// <param name="Standard">是否使用标准方式</param>
     /// <returns>加密后的文本</returns>
-    public static string Encrypt(this string str, string SecretKey, bool SingleLine = true, bool Standard = false)
+    public static string DESEncrypt(this string str, string SecretKey, bool SingleLine = true, bool Standard = false)
     {
         DES des = DES.Create();
         if (Standard)
@@ -117,7 +117,7 @@ public static class StringExtension
     /// <param name="SingleLine">True：解析单行；False：解析所有</param>
     /// <param name="Standard">是否使用标准方式</param>
     /// <returns>原始文本</returns>
-    public static string Decrypt(this string str, string SecretKey, bool SingleLine = true, bool Standard = false)
+    public static string DESDecrypt(this string str, string SecretKey, bool SingleLine = true, bool Standard = false)
     {
         #region 数据还原
         int len = str.Length / 2;
@@ -134,6 +134,45 @@ public static class StringExtension
             return "不是有效的加密数据。";
         }
         #endregion
-        return buffer.Decrypt(SecretKey, SingleLine, Standard);
+        return buffer.DESDecrypt(SecretKey, SingleLine, Standard);
+    }
+
+    /// <summary>
+    /// 通过密钥，对字符串形式的加密数据进行解密
+    /// </summary>
+    /// <param name="bytes"></param>
+    /// <param name="SecretKey">密钥</param>
+    /// <param name="SingleLine">True：解析单行；False：解析所有</param>
+    /// <param name="Standard">是否使用标准方式</param>
+    /// <returns></returns>
+    private static string DESDecrypt(this byte[] bytes, string SecretKey, bool SingleLine = true, bool Standard = false)
+    {
+        DES des = DES.Create();
+        if (Standard)
+        {
+            des.Mode = CipherMode.ECB;
+            des.Padding = PaddingMode.Zeros;
+        }
+        des.Key = SecretKey.GetMD5String().Substring(0, 0x08).ToUTF8Bytes();
+        des.IV = SecretKey.GetMD5String().Substring(0, 0x08).ToUTF8Bytes();
+        using MemoryStream ms = new(bytes);
+        string val = string.Empty;
+        try
+        {
+            using CryptoStream encStream = new(ms, des.CreateDecryptor(), CryptoStreamMode.Read);
+            using StreamReader sr = new(encStream);
+            val = SingleLine ? sr.ReadLine() : sr.ReadToEnd();
+            sr.Close();
+            encStream.Close();
+        }
+        catch
+        {
+            val = "密钥错误，解密失败。";
+        }
+        finally
+        {
+            ms.Close();
+        }
+        return val;
     }
 }

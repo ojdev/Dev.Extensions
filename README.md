@@ -1,4 +1,4 @@
-# CSharp.Extensions
+# Dev.Extensions
 C#中使用到的以及基础类型的扩展方法
 [![DNC](https://img.shields.io/badge/.netcore-%3E%3D2.1-green.svg)](#)
 [![CodeFactor](https://www.codefactor.io/repository/github/ojdev/dev.extensions/badge)](https://www.codefactor.io/repository/github/ojdev/dev.extensions)
@@ -11,11 +11,10 @@ C#中使用到的以及基础类型的扩展方法
  - IsNullOrWhiteSpace
  - NotSpace
  - As<T>
- - ToBytes
- - UEquals
-
-## DateTimeOffset
-- GetTimeSpan
+ - ToUTF8Bytes
+ - GetMD5String
+ - DESEncrypt
+ - DESDecrypt
 
 ## Byte
 - OfString
@@ -28,3 +27,6 @@ C#中使用到的以及基础类型的扩展方法
 
 ## IQueryable
 - WhereIf
+
+## Other
+- TypeEx.GetTypesFrom<>
