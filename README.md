@@ -29,4 +29,4 @@ C#中使用到的以及基础类型的扩展方法
 - WhereIf
 
 ## Other
-- TypeEx.GetTypesFrom<>
+- TypeEx.GetTypesFrom<T>
