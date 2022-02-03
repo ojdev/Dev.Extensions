@@ -3,21 +3,27 @@ name: .NET
 on:
   push:
     tags:
-    - "v[0-9]+.[0-9]+.[0-9]+"
+    - v*
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+      TZ: Asia/Shanghai
+      TAG_NUMBER: $GITHUB_RUN_NUMBER
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.101
+    - name: Get tag
+      id: tag
+      uses: dawidd6/action-get-tag@v1
+      with:
+        # Optionally strip `v` prefix
+        strip_v: true
     - name: Set VERSION variable from tag
-      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV      
-    - name: ECHO VERSION variable from tag
-      run: echo $GITHUB_ENV
+      run: echo ${{steps.tag.outputs.tag}} 
     
