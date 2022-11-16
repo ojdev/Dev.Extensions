@@ -15,6 +15,7 @@ C#中使用到的以及基础类型的扩展方法
  - GetMD5String
  - DESEncrypt
  - DESDecrypt
+ - AppendIf
 
 ## Byte
 - OfString
