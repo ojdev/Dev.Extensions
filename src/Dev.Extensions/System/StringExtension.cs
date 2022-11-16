@@ -175,4 +175,20 @@ public static class StringExtension
         }
         return val;
     }
+    
+    /// <summary>
+    /// 根据条件在尾部追加字符串
+    /// </summary>
+    /// <param name="val"></param>
+    /// <param name="condition">成立条件</param>
+    /// <param name="newstr">要追加的新字符串</param>
+    /// <returns></returns>
+    public static string AppendIf(this string val, bool condition, string newstr)
+    {
+        if (condition)
+        {
+            val += newstr;
+        }
+        return val;
+    }
 }
